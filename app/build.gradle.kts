@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.storage.CacheResetOnProcessCanceled.enabled
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -34,10 +36,10 @@ android {
     kotlinOptions {
         jvmTarget = "18"
     }
-    buildFeatures{
-        viewBinding = true
-    }
 
+   buildFeatures{
+       viewBinding = true
+   }
 }
 
 dependencies {
@@ -45,6 +47,8 @@ dependencies {
 
     implementation ("androidx.room:room-runtime:$room_version")
     annotationProcessor ("androidx.room:room-compiler:$room_version")
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
+
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("pl.droidsonroids.gif:android-gif-drawable:1.2.28")
     implementation("androidx.appcompat:appcompat:1.6.1")

@@ -1,17 +1,21 @@
 package com.project.recipeapp
 
 import android.content.Context
+import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import
+import com.bumptech.glide.Glide
+import com.project.recipeapp.databinding.PopularRvItemBinding
 
 class PopularAdapter(var dataList: ArrayList<Recipe>, var context: Context):
     RecyclerView.Adapter<PopularAdapter.ViewHolder>() {
 
-    inner class ViewHolder(var binding:PopularRvItemBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class ViewHolder(val binding: PopularRvItemBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        var binding = PopularRvItemBinding.inflate(layout)
+        val binding = PopularRvItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ViewHolder(binding)
     }
 
     override fun getItemCount(): Int {
@@ -19,6 +23,9 @@ class PopularAdapter(var dataList: ArrayList<Recipe>, var context: Context):
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        TODO("Not yet implemented")
+            Glide.with(context).load(dataList[position].img).into(holder.binding.popularImg)
+        holder.binding.popularTxt.text = dataList.get(position).tittle
+        val time = dataList[position].ing.split("\n".toRegex()).dropLastWhile { it.isEmpty()}.toTypedArray()
+        holder.binding.popularTimeTxt.text = time[0]
     }
 }
