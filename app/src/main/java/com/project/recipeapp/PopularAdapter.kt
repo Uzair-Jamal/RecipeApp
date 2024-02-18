@@ -23,8 +23,8 @@ class PopularAdapter(var dataList: ArrayList<Recipe>, var context: Context):
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-            Glide.with(context).load(dataList[position].img).into(holder.binding.popularImg)
-        holder.binding.popularTxt.text = dataList.get(position).tittle
+        Glide.with(context).load(dataList[position].img).into(holder.binding.popularImg)
+        holder.binding.popularTxt.text = dataList[position].tittle
         val time = dataList[position].ing.split("\n".toRegex()).dropLastWhile { it.isEmpty()}.toTypedArray()
         holder.binding.popularTimeTxt.text = time[0]
     }
