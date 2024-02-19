@@ -1,5 +1,6 @@
 package com.project.recipeapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -18,6 +19,11 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setUpRecyclerView()
+
+        binding.searchView.setOnClickListener {
+            startActivity(Intent(this,SearchActivity::class.java))
+            finish()
+        }
     }
 
     private fun setUpRecyclerView() {
