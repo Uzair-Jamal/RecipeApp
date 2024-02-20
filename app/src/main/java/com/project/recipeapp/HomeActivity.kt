@@ -22,7 +22,6 @@ class HomeActivity : AppCompatActivity() {
 
         binding.searchView.setOnClickListener {
             startActivity(Intent(this,SearchActivity::class.java))
-            finish()
         }
     }
 
@@ -42,7 +41,7 @@ class HomeActivity : AppCompatActivity() {
             }
             popularAdapter = PopularAdapter(dataList,this)
             binding.rvPopular.adapter = popularAdapter
-        }
 
+            }
+        }
     }
-}
