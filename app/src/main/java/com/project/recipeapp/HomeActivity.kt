@@ -25,40 +25,31 @@ class HomeActivity : AppCompatActivity() {
         }
         binding.saladIv.setOnClickListener {
             val intent = Intent(this, CategoryActivity::class.java)
-            intent.putExtra("TITTLE","Salad")
+            intent.putExtra("TITLE","Salad")
             intent.putExtra("CATEGORY","Salad")
             startActivity(intent)
         }
         binding.mainIv.setOnClickListener {
             val intent = Intent(this, CategoryActivity::class.java)
-            intent.putExtra("TITTLE","Main")
+            intent.putExtra("TITLE","Main Dish")
             intent.putExtra("CATEGORY","Dish")
             startActivity(intent)
 
         }
         binding.drinksIv.setOnClickListener {
             val intent = Intent(this, CategoryActivity::class.java)
-            intent.putExtra("TITTLE","Drinks")
+            intent.putExtra("TITLE","Drinks")
             intent.putExtra("CATEGORY","Drinks")
             startActivity(intent)
 
         }
         binding.dessertIv.setOnClickListener {
             val intent = Intent(this, CategoryActivity::class.java)
-            intent.putExtra("TITTLE","Dish")
-            intent.putExtra("CATEGORY","Dish")
-            startActivity(intent)
-
-        }
-        binding.dessertIv.setOnClickListener {
-            val intent = Intent(this, CategoryActivity::class.java)
-            intent.putExtra("TITTLE","Desserts")
+            intent.putExtra("TITLE","Desserts")
             intent.putExtra("CATEGORY","Desserts")
             startActivity(intent)
-
         }
     }
-
     private fun setUpRecyclerView() {
         dataList = ArrayList()
         binding.rvPopular.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false)

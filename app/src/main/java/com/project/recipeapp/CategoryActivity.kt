@@ -2,6 +2,7 @@ package com.project.recipeapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import com.project.recipeapp.databinding.ActivityCategoryBinding
@@ -16,7 +17,10 @@ class CategoryActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        title = intent.getStringExtra("TITTLE")
+        val extras = intent.extras
+        Log.d("CategoryActivity", "Intent extras: $extras")
+        binding.categoryTitle.text = intent.getStringExtra("TITLE")
+        Log.d("CategoryActivity","title: $title")
         setUpRecyclerView()
         binding.categoryBackBtn.setOnClickListener {
             finish()
