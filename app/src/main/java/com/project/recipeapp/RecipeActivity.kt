@@ -1,5 +1,6 @@
 package com.project.recipeapp
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.graphics.PorterDuff
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +13,7 @@ import com.project.recipeapp.databinding.ActivityRecipeBinding
 class RecipeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRecipeBinding
     var imgCrop = true
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRecipeBinding.inflate(layoutInflater)
@@ -36,12 +38,13 @@ class RecipeActivity : AppCompatActivity() {
         binding.stepsBtn.setOnClickListener {
             binding.stepsBtn.setBackgroundResource(R.drawable.btn_ing)
             binding.stepsBtn.setTextColor(getColor(R.color.white))
-            binding.ingBtn.setTextColor(getColor(R.color.white))
+            binding.ingBtn.setTextColor(getColor(R.color.black))
             binding.ingBtn.background = null
             binding.stepsScroll.visibility = View.VISIBLE
             binding.ingScroll.visibility = View.GONE
         }
 
+        binding.stepsScroll.visibility = View.GONE
         binding.ingBtn.setOnClickListener {
             binding.ingBtn.setBackgroundResource(R.drawable.btn_ing)
             binding.ingBtn.setTextColor(getColor(R.color.white))
@@ -49,6 +52,7 @@ class RecipeActivity : AppCompatActivity() {
             binding.stepsBtn.background = null
             binding.stepsScroll.visibility = View.GONE
             binding.ingScroll.visibility = View.VISIBLE
+
         }
 
         binding.zoomIv.setOnClickListener {
@@ -67,7 +71,7 @@ class RecipeActivity : AppCompatActivity() {
                 imgCrop = !imgCrop
             }
         }
-        binding.backBtn!!.setOnClickListener {
+        binding.backBtn.setOnClickListener {
             finish()
         }
     }
