@@ -1,6 +1,7 @@
 package com.project.recipeapp
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -27,5 +28,15 @@ class CategoryAdapter(var categoryList: ArrayList<Recipe>, var context: Context)
         holder.binding.categoryTime.text = categoryList[position].ing
         var temp = categoryList[position].ing.split("\n").dropLastWhile { it.isEmpty() }.toTypedArray()
         holder.binding.categoryTime.text = temp[0]
+
+        holder.binding.nextBtn.setOnClickListener {
+            var intent = Intent(context, RecipeActivity::class.java)
+            intent.putExtra("img",categoryList[position].img)
+            intent.putExtra("title",categoryList[position].tittle)
+            intent.putExtra("des",categoryList[position].des)
+            intent.putExtra("ing",categoryList[position].ing)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            context.startActivity(intent)
         }
     }
+}

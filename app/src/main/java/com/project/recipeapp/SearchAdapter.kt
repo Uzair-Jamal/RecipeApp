@@ -2,6 +2,7 @@ package com.project.recipeapp
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -31,5 +32,14 @@ class SearchAdapter(var dataList:ArrayList<Recipe>, var context: Context): Recyc
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         Glide.with(context).load(dataList[position].img).into(holder.binding.searchImg)
         holder.binding.searchTxt.text = dataList[position].tittle
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context, RecipeActivity::class.java)
+            intent.putExtra("img",dataList[position].img)
+            intent.putExtra("title",dataList[position].tittle)
+            intent.putExtra("des",dataList[position].des)
+            intent.putExtra("ing",dataList[position].ing)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            context.startActivity(intent)
+        }
     }
 }
